@@ -1,0 +1,25 @@
+.sidebar {
+	background: #318CBF;
+	padding: 30px;
+	&__list {
+	}
+
+	li {
+		margin-bottom: 15px;
+
+		&:last-child {
+			margin-top: 100px;
+		}
+	}
+
+	// .sidebar__link
+	&__link {
+		font-weight: 700;
+		font-size: 40px;
+		line-height: 47px;
+		color: #FFFFFF;
+		&.active {
+			text-decoration: underline;
+		}
+	}
+}

@@ -1,0 +1,14 @@
+.app {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  grid-template-rows: 140px auto;
+  gap: 40px;
+  max-width: 1430px;
+  margin: 0 auto;
+  padding: 0 15px;
+  grid-template-areas: 'header header' 'nav content';
+  &__wrapper {
+    grid-area: content;
+    background: #DFDFDF;
+  }
+}

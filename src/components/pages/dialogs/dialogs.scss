@@ -1,0 +1,121 @@
+.dialogs {
+	// .dialogs__title
+	&__title {
+	}
+
+	// .dialogs__wrapper
+	&__wrapper {
+		display: grid;
+		grid-template-columns: 17% 1fr;
+		gap: 60px;
+		margin-top: 30px;
+	}
+
+	// .dialogs__users
+	&__users {
+	}
+
+	// .dialogs__user
+	&__user {
+		background: #fff;
+		border-radius: 20px;
+		padding: 20px 15px;
+	}
+
+	// .dialogs__messages
+	&__messages {
+	}
+}
+
+.user-dialogs {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 15px;
+	// .user-dialogs__name
+	&__name {
+		font-size: 20px;
+	}
+
+	// .user-dialogs__status
+	&__status {
+		width: 10px;
+		height: 10px;
+		background: #00be02;
+		border-radius: 50%;
+	}
+}
+
+.messages {
+	position: relative;
+	max-height: 700px;
+	overflow: auto;
+	background: #fff;
+	padding: 15px;
+	border-radius: 5px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 100px;
+
+	// .messages__item
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		background: #DFDFDF;
+		max-width: 45%;
+		padding: 5px 15px;
+		margin-bottom: 15px;
+		img {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+		}
+		// .messages__item_to
+		&_to {
+			align-self: flex-end;
+		}
+
+		// .messages__item_from
+		&_from {
+		}
+	}
+
+	// .messages__text
+	&__text {
+		font-size: 22px;
+	}
+
+	// .messages__form
+	&__form {
+		margin-top: 30px;
+		position: absolute;
+		bottom: 15px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 96%;
+	}
+
+	// .messages__form-wrapper
+	&__form-wrapper {
+		position: relative;
+	}
+
+	// .messages__input
+	&__input {
+		padding: 22px 15px;
+		border-radius: 20px;
+		padding-right: 18%;
+	}
+
+	// .messages__btn
+	&__btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 10px;
+		padding: 13px 30px;
+		border-radius: 20px;
+	}
+}
