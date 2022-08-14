@@ -1,12 +1,11 @@
 import user from "../../../../assets/user.jpg";
 import './ProfilePosts.scss'
+import {useDispatch, useSelector} from "react-redux";
 
 const ProfilePosts = () => {
-    const postsInfo = [
-        {id: 0, text: 'Hey, why nobody loves me?!'},
-        {id: 1, text: 'Hey, why nobody loves me?!'},
-        {id: 2, text: 'Hey, why nobody loves me?!'},
-    ]
+
+    const postsInfo = useSelector(state => state.posts)
+    const dispatch = useDispatch()
 
     const postElements = postsInfo.map(({id, text}) => (
         <div key={id} className="posts-profile__item">
@@ -18,7 +17,7 @@ const ProfilePosts = () => {
     return (
         <div className="profile__posts posts-profile">
             <div className="posts-profile__new ">
-                <div className="posts-profile__title">Create new one</div>
+                <div onClick={() => dispatch({type: 'LOG'})} className="posts-profile__title">Create new one</div>
                 <form className="posts-profile__form">
                     <input type="text" placeholder='Your news...' className="input"/>
                     <button className="btn">Send</button>
