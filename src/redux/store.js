@@ -1,8 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
 import profileReducer from "../components/pages/profile/profileSlice";
+import usersReducer from "../components/pages/users/usersSlice";
 
 const reducer = {
-    profile: profileReducer
+    profile: profileReducer,
+    users: usersReducer
 }
 
 

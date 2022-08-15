@@ -1,0 +1,64 @@
+@import 'src/assets/_variables.scss';
+
+.wrapper {
+}
+
+.items {
+	margin-top: 20px;
+	display: flex;
+	gap: 5px;
+}
+
+.item {
+	padding: 5px 10px;
+	background: $bgMain;
+	color: #fff;
+	font-size: 19px;
+	//transition: all .3s ease;
+	cursor: pointer;
+	&.active {
+		background: #fff;
+		color: $bgMain;
+	}
+	&:hover {
+		background: #fff;
+		color: $bgMain;
+	}
+}
+
+.users {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	margin-top: 50px;
+	gap: 20px;
+}
+
+.user {
+	display: flex;
+	align-items: center;
+	background: #fff;
+	padding: 20px;
+	gap: 20px;
+}
+
+.img {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+
+}
+
+.box {
+}
+
+.name {
+	font-size: 30px;
+}
+
+.status {
+	font-size: 20px;
+}
+
+.follow {
+	padding: 5px 10px;
+}
