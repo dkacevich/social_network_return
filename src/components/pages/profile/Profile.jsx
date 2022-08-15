@@ -1,7 +1,7 @@
 import bg from './../../../assets/bg.jpg'
 import './profile.scss'
-import ProfileInfo from "./profilePosts/ProfileInfo";
-import ProfilePosts from "./profileInfo/ProfilePosts";
+import ProfileInfo from "./profileInfo/ProfileInfo";
+import ProfilePosts from "./profilePosts/ProfilePosts";
 
 
 const Profile = () => {

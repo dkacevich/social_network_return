@@ -3,6 +3,8 @@ import Sidebar from "../sidebar/Sidebar";
 import './app.scss'
 import Profile from "../pages/profile/Profile";
 import Dialogs from "../pages/dialogs/Dialogs";
+import Users from "../pages/users/Users";
+
 import {
     BrowserRouter as Router,
     Routes,
@@ -20,6 +22,7 @@ const App = () => {
                     <Routes>
                         <Route path='profile' element={<Profile/> }/>
                         <Route path='dialogs' element={<Dialogs/> }/>
+                        <Route path='search' element={<Users/> }/>
                     </Routes>
                 </div>
             </div>

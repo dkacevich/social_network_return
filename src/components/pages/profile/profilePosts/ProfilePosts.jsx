@@ -1,10 +1,14 @@
 import user from "../../../../assets/user.jpg";
 import './ProfilePosts.scss'
 import {useDispatch, useSelector} from "react-redux";
+import {addPost} from "../profileSlice";
+import {useState} from "react";
 
 const ProfilePosts = () => {
 
-    const postsInfo = useSelector(state => state.posts)
+    const [postText, setPostText] = useState('');
+
+    const postsInfo = useSelector(({profile}) => profile.posts)
     const dispatch = useDispatch()
 
     const postElements = postsInfo.map(({id, text}) => (
@@ -14,12 +18,24 @@ const ProfilePosts = () => {
         </div>
     ))
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(addPost(postText))
+        setPostText('')
+    }
+
+
     return (
         <div className="profile__posts posts-profile">
             <div className="posts-profile__new ">
-                <div onClick={() => dispatch({type: 'LOG'})} className="posts-profile__title">Create new one</div>
-                <form className="posts-profile__form">
-                    <input type="text" placeholder='Your news...' className="input"/>
+                <div className="posts-profile__title">Create new one</div>
+                <form onSubmit={handleSubmit} className="posts-profile__form">
+                    <input onChange={(e) => setPostText(e.target.value)}
+                           value={postText}
+                           type="text"
+                           placeholder='Your news...'
+                           className="input"
+                    />
                     <button className="btn">Send</button>
                 </form>
             </div>
