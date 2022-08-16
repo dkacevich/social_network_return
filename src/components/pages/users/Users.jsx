@@ -2,6 +2,7 @@ import styles from './Users.module.scss'
 import {useEffect, useState} from "react";
 import {changeCurrentPage, fetchUsers} from "./usersSlice";
 import {useDispatch, useSelector} from "react-redux";
+import ReactPaginate from "react-paginate";
 
 const Users = () => {
     const dispatch = useDispatch()
@@ -11,12 +12,13 @@ const Users = () => {
     const currentPage = useSelector(state => state.users.currentPage)
     const pageSize = useSelector(state => state.users.pageSize)
     const totalUsersCount = useSelector(state => state.users.totalUsersCount)
-    const [currentPagination, setCurrentPagination] = useState(1)
 
 
     useEffect(() => {
         dispatch(fetchUsers({currentPage, pageSize}))
     }, [currentPage]);
+
+
     if (loading) {
         return 'Loading'
     } else if (error) {
@@ -40,52 +42,33 @@ const Users = () => {
         }
     }
     const userElements = renderUserElements(users)
-    const changeUserPage = (num) => {
-        if (num !== currentPage) {
-            dispatch(changeCurrentPage(num))
-        }
-    }
+    const changeUserPage = (num) => dispatch(changeCurrentPage(num))
 
 
 
-    // Paginator Logic
 
     const paginationTotal = Math.ceil(totalUsersCount / pageSize)
-    // First way
-    const paginationArray = [...Array(paginationTotal).keys()].map(i => i + 1)
-    // Second way (don't know which better
-    // const paginationItems = []
-    // for (let i = 1; i <= paginationTotal; i++) {
-    //     paginationItems.push(i)
-    // }
-
-    const paginationCount = paginationTotal / 10
-    // 10 = portionSize
-    const leftBorder = (currentPagination - 1) * 10 + 1
-    const rightBorder = currentPagination * 10
-
-    const paginationItems = paginationArray
-        .filter(item => item >= leftBorder && item <= rightBorder)
-        .map((item) => {
-            return <li key={item} onClick={() => changeUserPage(item)} className={styles.item}>{item}</li>
-        })
-
 
     return (
         <div className="page">
             <div className="page-title">Users</div>
             <div className={styles.wrapper}>
-                <ul className={styles.items}>
-                    {
-                        currentPagination !== 1 &&
-                        <button onClick={() => setCurrentPagination(state => state - 1)}>Prev</button>
-                    }
-                    {paginationItems}
-                    {
-                        paginationCount > currentPagination &&
-                        <button onClick={() => setCurrentPagination(state => state + 1)}>Prev</button>
-                    }
-                </ul>
+                <ReactPaginate
+                    breakLabel="..."
+                    nextLabel="Next>"
+                    forcePage={currentPage - 1}
+                    onPageChange={(e) => changeUserPage(e.selected + 1)}
+                    pageRangeDisplayed={5}
+                    pageCount={paginationTotal}
+                    previousLabel="Prev"
+                    previousClassName='btn'
+                    nextClassName='btn'
+                    renderOnZeroPageCount={null}
+                    className={styles.items}
+                    activeClassName={styles.active}
+                    pageClassName={styles.item}
+
+                />
                 <ul className={styles.users}>
                     {userElements}
                 </ul>

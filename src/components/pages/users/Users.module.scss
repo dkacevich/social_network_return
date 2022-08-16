@@ -10,12 +10,15 @@
 }
 
 .item {
-	padding: 5px 10px;
 	background: $bgMain;
 	color: #fff;
 	font-size: 19px;
 	//transition: all .3s ease;
 	cursor: pointer;
+	a {
+		padding: 5px 10px;
+		display: block;
+	}
 	&.active {
 		background: #fff;
 		color: $bgMain;
