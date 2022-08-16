@@ -1,8 +1,10 @@
 import styles from './Users.module.scss'
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {changeCurrentPage, fetchUsers} from "./usersSlice";
 import {useDispatch, useSelector} from "react-redux";
 import ReactPaginate from "react-paginate";
+import {Link} from "react-router-dom";
+import {MoonLoader} from "react-spinners";
 
 const Users = () => {
     const dispatch = useDispatch()
@@ -19,18 +21,15 @@ const Users = () => {
     }, [currentPage]);
 
 
-    if (loading) {
-        return 'Loading'
-    } else if (error) {
-        return "Error"
-    }
     const renderUserElements = (users) => {
         if (users?.length !== 0) {
             return users.map(({name, photos, status, id}) => (
                     <li key={id} className={styles.user}>
-                        <img
-                            src={photos?.small ? photos.small : 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'}
-                            alt="" className={styles.img}/>
+                        <Link to={`/profile/${id}`}>
+                            <img
+                                src={photos?.small ? photos.small : 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'}
+                                alt="" className={styles.img}/>
+                        </Link>
                         <div className={styles.box}>
                             <div className={styles.name}>{name}</div>
                             <div className={styles.status}>{status ? status : 'User don\'t have status'}</div>
@@ -45,9 +44,14 @@ const Users = () => {
     const changeUserPage = (num) => dispatch(changeCurrentPage(num))
 
 
-
-
     const paginationTotal = Math.ceil(totalUsersCount / pageSize)
+
+    if (loading) {
+        return <MoonLoader/>
+    } else if (error) {
+        console.log('error')
+    }
+
 
     return (
         <div className="page">

@@ -10,17 +10,29 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getAuthStatus} from "./authSlice";
 
 
 const App = () => {
+
+    const dispatch = useDispatch()
+    const authorized = useSelector(state => state.auth.authorized)
+
+    useEffect(() => {
+        dispatch(getAuthStatus())
+    }, []);
+
+
     return (
         <Router>
             <div className='app'>
-                <Header/>
+                <Header authorized={authorized}/>
                 <Sidebar/>
                 <div className="app__wrapper">
                     <Routes>
-                        <Route path='profile' element={<Profile/> }/>
+                        <Route path='profile/:id' element={<Profile/> }/>
                         <Route path='dialogs' element={<Dialogs/> }/>
                         <Route path='search' element={<Users/> }/>
                     </Routes>

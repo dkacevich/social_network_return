@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {createAsyncThunk} from "@reduxjs/toolkit/src/createAsyncThunk";
-import {getUsers} from "../../../services/serverAPI";
+import serverAPI from "../../../services/serverAPI";
 
 const initialState = {
     users: [],
@@ -14,7 +14,7 @@ const initialState = {
 export const fetchUsers = createAsyncThunk(
     'users/fetchUsers',
     async (settings) => {
-        return await getUsers(settings.currentPage, settings.pageSize)
+        return await serverAPI.getUsers(settings.currentPage, settings.pageSize)
     }
 )
 
