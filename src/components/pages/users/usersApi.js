@@ -1,37 +1,39 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {baseApi} from "../../api/apiSlice";
 
-const API_BASE = 'https://social-network.samuraijs.com/api/1.0'
-const API_KEY = 'e254c744-2e53-4cc6-9d1f-15d4ac2623d3'
-
-
-export const usersApi = createApi({
-    reducerPath: 'usersApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: API_BASE,
-        prepareHeaders(headers) {
-            headers.set('API-KEY', API_KEY)
-            return headers;
-        },
-        credentials: "include"
-    }),
+export const usersApi = baseApi.injectEndpoints({
     endpoints: builder => ({
         getUsers: builder.query({
             query: (count, limit = 10) => `/users?page=${count}&count=${limit}`,
         }),
-        followUser: builder.mutation({
-            query: (id) => ({
+        changeFollowUser: builder.mutation({
+            query: ({id, method}) => ({
                 url: `follow/${id}`,
-                method: 'POST',
+                method: method,
             }),
+
+            async onQueryStarted({id, method, pageCount}, { dispatch, queryFulfilled }) {
+                const patchResult = dispatch(
+                    usersApi.util.updateQueryData('getUsers', pageCount, draft => {
+                        const user = draft.items.find(user => user.id === id)
+                        method === 'POST' ? user.followed = true :user.followed = false
+                        user.loading = true
+                    })
+                )
+                try {
+                    await queryFulfilled
+                    dispatch(
+                        usersApi.util.updateQueryData('getUsers', pageCount, draft => {
+                            const user = draft.items.find(user => user.id === id)
+                            user.loading = false
+                        })
+                    )
+                } catch {
+                    patchResult.undo()
+                }
+            },
         }),
-        unfollowUser: builder.mutation({
-            query: (id) => ({
-                url: `follow/${id}`,
-                method: 'DELETE',
-            }),
-        })
     })
 })
 
 
-export const {useGetUsersQuery, useFollowUserMutation, useUnfollowUserMutation} = usersApi
+export const {useGetUsersQuery, useChangeFollowUserMutation} = usersApi

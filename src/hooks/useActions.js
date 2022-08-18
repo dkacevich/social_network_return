@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import {bindActionCreators} from "redux";
-import {usersActions} from "../pages/users/usersSlice";
+import {usersActions} from "../components/pages/users/usersSlice";
 
 
 const allActions = {

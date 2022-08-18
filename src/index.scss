@@ -130,3 +130,9 @@ h6 {
 .user-spinner {
 	display: none;
 }
+
+button {
+	&:disabled {
+		background: #ff0000;
+	}
+}

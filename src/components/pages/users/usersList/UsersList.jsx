@@ -1,16 +1,15 @@
 import styles from "../Users.module.scss";
 import {Link} from "react-router-dom";
-import {useFollowUserMutation, useUnfollowUserMutation} from "../usersApi";
+import {useChangeFollowUserMutation} from "../usersApi";
 
-const UsersList = ({users}) => {
+const UsersList = ({users, pageCount}) => {
 
-    const [followUser, resultFollow] = useFollowUserMutation()
-    const [unfollowUser, resultUnfollow] = useUnfollowUserMutation()
+    const [changeFollowUser, resultFollow] = useChangeFollowUserMutation()
 
 
     const renderUserElements = (users) => {
         if (users?.length) {
-            return users.map(({name, photos, status, id, followed}) => (
+            return users.map(({name, photos, status, id, followed, loading}) => (
                     <li key={id} className={styles.user}>
                         <Link to={`/profile/${id}`}>
                             <img
@@ -21,7 +20,7 @@ const UsersList = ({users}) => {
                             <div className={styles.name}>{name}</div>
                             <div className={styles.status}>{status ? status : 'User don\'t have status'}</div>
                         </div>
-                        <button onClick={() => changeFollowed(followed, id)}
+                        <button disabled={loading} onClick={() => changeFollowed(followed, id)}
                                 className={`btn ${styles.follow}`}>{followed ? 'Unfollow' : 'Follow'}</button>
                     </li>
                 )
@@ -31,9 +30,9 @@ const UsersList = ({users}) => {
 
     const changeFollowed = (followed, id) => {
         if (followed) {
-            unfollowUser(id)
+            changeFollowUser({id, method: 'DELETE', pageCount})
         } else {
-            followUser(id)
+            changeFollowUser({id, method: 'POST', pageCount})
         }
     }
 
