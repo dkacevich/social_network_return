@@ -4,14 +4,18 @@ import serverAPI from "../../services/serverAPI";
 
 const initialState = {
     authData: null,
-    authorized: false
+    authorized: false,
+    loading: true
 }
 
 export const getAuthStatus = createAsyncThunk(
     'auth/getAuthStatus',
-    () => {
-        return serverAPI.getAuthStatusAPI()
-    }
+    () => serverAPI.getAuthStatusAPI()
+)
+
+export const login = createAsyncThunk(
+    'auth/getAuthStatus',
+    () => serverAPI.getAuthStatusAPI()
 )
 
 
@@ -24,8 +28,10 @@ const authSlice = createSlice({
             if (action.payload.resultCode === 0) {
                 state.authorized = true
                 state.authData = action.payload.data
+                state.loading = false
             } else {
                 state.authorized = false
+                state.loading = false
             }
         }
     }

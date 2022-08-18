@@ -13,7 +13,7 @@ const reducer = {
 
 const store = configureStore({
     reducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(usersApi.middleware),
     devTools: process.env.NODE_ENV !== 'production',
 })
 

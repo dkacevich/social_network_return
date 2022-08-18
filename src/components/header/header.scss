@@ -1,16 +1,50 @@
+@import "src/assets/_variables";
+
 .header {
-  grid-area: header;
-  display: flex;
-  justify-content: space-between;
-  background: #318CBF;
-  padding: 30px;
+	grid-area: header;
+	display: flex;
+	justify-content: space-between;
+	background: #318CBF;
+	padding: 30px;
 
-  &__logo {
-    text-align: center;
-  }
+	&__logo {
+		text-align: center;
+	}
 
-  // .header__user
-  &__user {
-    max-width: 50px;
-  }
+	// .header__user
+	&__user {
+		max-width: 50px;
+	}
+	// .header__user
+	&__info {
+		display: inline-flex;
+		justify-content: flex-end;
+		gap: 20px;
+	}
+
+	// .header__box
+	&__box {
+		display: inline-grid;
+		gap: 4px;
+		color: #fff;
+	}
+
+	// .header__login
+	&__login {
+	}
+
+	// .header__email
+	&__email {
+	}
+
+	// .header__btn
+	&__btn {
+		background: #fff !important;
+		color: $bgMain !important;
+		border: 1px solid #000000;
+	}
+
+	// .header__logo
+	&__logo {
+	}
 }

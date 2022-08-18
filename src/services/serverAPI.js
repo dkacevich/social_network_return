@@ -14,10 +14,7 @@ const instanceAPI = axios.create({
 
 
 const serverAPI = {
-    getUsers: async (currentPage, pageSize) => {
-        const res = await instanceAPI.get(`${API_BASE}/users?page=${currentPage}&count=${pageSize}`)
-        return res.data
-    },
+
     getProfileAPI: async (id) => {
         const res = await instanceAPI.get(`${API_BASE}/profile/${id}`)
         return res.data

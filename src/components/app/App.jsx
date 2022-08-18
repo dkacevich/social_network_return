@@ -13,22 +13,27 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getAuthStatus} from "./authSlice";
+import {MoonLoader} from "react-spinners";
 
 
 const App = () => {
 
     const dispatch = useDispatch()
-    const authorized = useSelector(state => state.auth.authorized)
+
+    const loading = useSelector(state => state.auth.loading)
 
     useEffect(() => {
         dispatch(getAuthStatus())
     }, []);
 
 
+
+    if (loading) return <MoonLoader/>
+
     return (
         <Router>
             <div className='app'>
-                <Header authorized={authorized}/>
+                <Header/>
                 <Sidebar/>
                 <div className="app__wrapper">
                     <Routes>
