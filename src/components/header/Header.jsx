@@ -1,7 +1,11 @@
 import logo from '../../assets/logo.svg'
 import './header.scss'
+import {useLogout} from "../app/authSlice";
+import {Link} from "react-router-dom";
 
 const Header = ({userData: {login, email}}) => {
+
+    const [logout, result] = useLogout()
 
     const user = (
         <div className='header__info'>
@@ -9,7 +13,7 @@ const Header = ({userData: {login, email}}) => {
                 <div className="header__login">{login}</div>
                 <div className="header__email">{email}</div>
             </div>
-            <button className="header__btn btn">{login ? 'Logout' : 'Login'}</button>
+            <button onClick={logout} className="header__btn btn">Logout</button>
         </div>
     )
 
@@ -17,7 +21,7 @@ const Header = ({userData: {login, email}}) => {
     return (
         <div className='header bg-sky-600'>
             <img className='header__logo' src={logo} alt=""/>
-            {login ? user : <img className='header__user' src={user} alt=""/>}
+            {login ? user : <Link className="header__btn btn" to='/login'>Login</Link>}
         </div>
     )
 }

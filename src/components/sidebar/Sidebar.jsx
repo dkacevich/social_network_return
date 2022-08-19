@@ -3,8 +3,6 @@ import {NavLink} from "react-router-dom";
 
 const Sidebar = () => {
 
-    // const linkClass = ({isActive}) => (isActive ? 'sidebar__link _active' : 'sidebar__link')
-    // Custom active className
 
     return (
         <aside className='sidebar'>

@@ -6,7 +6,7 @@ const useRedirect = () => {
     } = getAuthStatus()
 
 
-    return {redirect: !!authData.data.login}
+    return {redirect: !authData.data.login}
 }
 
 export default useRedirect
