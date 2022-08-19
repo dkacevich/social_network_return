@@ -21,7 +21,7 @@ const UsersList = ({users, pageCount}) => {
                             <div className={styles.status}>{status ? status : 'User don\'t have status'}</div>
                         </div>
                         <button disabled={loading} onClick={() => changeFollowed(followed, id)}
-                                className={`btn ${styles.follow}`}>{followed ? 'Unfollow' : 'Follow'}</button>
+                                className={`btn ${styles.follow}`}>{loading ? 'Proceeding...' : followed ? 'Unfollow' : 'Follow'}</button>
                     </li>
                 )
             )

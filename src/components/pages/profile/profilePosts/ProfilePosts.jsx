@@ -1,17 +1,18 @@
 import user from "../../../../assets/user.jpg";
 import './ProfilePosts.scss'
-import {useDispatch, useSelector} from "react-redux";
-import {addPost} from "../profileSlice";
 import {useState} from "react";
+
+const posts = [
+    {id: 0, text: 'Hey, why nobody loves me?!'},
+    {id: 1, text: 'Hey, why nobody loves me?!'},
+    {id: 2, text: 'Hey, why nobody loves me?!'},
+]
 
 const ProfilePosts = () => {
 
     const [postText, setPostText] = useState('');
 
-    const postsInfo = useSelector(({profile}) => profile.posts)
-    const dispatch = useDispatch()
-
-    const postElements = postsInfo.map(({id, text}) => (
+    const postElements = posts.map(({id, text}) => (
         <div key={id} className="posts-profile__item">
             <img className='posts-profile__user' src={user} alt=""/>
             <div className="posts-profile__text">{text}</div>
@@ -20,7 +21,7 @@ const ProfilePosts = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(addPost(postText))
+        posts.push({id: posts.length, text: postText})
         setPostText('')
     }
 

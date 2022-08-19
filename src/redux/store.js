@@ -1,19 +1,16 @@
 import {configureStore} from "@reduxjs/toolkit";
-import profileReducer from "../components/pages/profile/profileSlice";
-import authReducer from "../components/app/authSlice";
-import {usersApi} from "../components/pages/users/usersApi";
+import {baseApi} from "../components/api/apiSlice";
 
 
 const reducer = {
-    profile: profileReducer,
-    auth: authReducer,
-    [usersApi.reducerPath]: usersApi.reducer,
+    //One reducer and middleware for all RTK Query APIs
+    [baseApi.reducerPath]: baseApi.reducer,
 }
 
 
 const store = configureStore({
     reducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(usersApi.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(baseApi.middleware),
     devTools: process.env.NODE_ENV !== 'production',
 })
 
