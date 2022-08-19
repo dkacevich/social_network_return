@@ -1,12 +1,11 @@
 import {getAuthStatus} from "../components/app/authSlice";
 
-const useRedirect = () => {
+const useAuthorized = () => {
     const {
         data: authData
     } = getAuthStatus()
 
-
-    return {redirect: !authData.data.login}
+    return {authorized: authData.data.login}
 }
 
-export default useRedirect
+export default useAuthorized

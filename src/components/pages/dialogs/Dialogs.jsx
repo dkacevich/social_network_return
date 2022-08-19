@@ -2,12 +2,12 @@ import './dialogs.scss'
 import user from './../../../assets/user.jpg'
 import user2 from './../../../assets/user2.jpg'
 import {Navigate} from "react-router-dom";
-import useRedirect from "../../../hooks/useRedirect";
+import useAuthorized from "../../../hooks/useAuthorized";
 
 const Dialogs = () => {
 
-    const {redirect} = useRedirect()
-    if (redirect) return <Navigate replace to='/login'/>
+    const {authorized} = useAuthorized()
+    if (!authorized) return <Navigate replace to='/login'/>
 
     return (
         <div className='dialogs page'>
