@@ -21,7 +21,6 @@ const Login = () => {
     const [getCaptchaUrl] = useGetCaptchaUrl()
 
     const {authorized} = useAuthorized()
-    console.log('render')
 
     const {register, reset, handleSubmit, clearErrors, setError, formState: {errors, isValid}} = useForm({
         resolver: yupResolver(schema),

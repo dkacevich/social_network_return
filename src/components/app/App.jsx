@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
 import {getAuthStatus} from "./authSlice";
 import {MoonLoader} from "react-spinners";
 import Login from "../pages/login/Login";
+import Settings from "../pages/settings/Settings";
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
                         <Route path='dialogs' element={<Dialogs/>}/>
                         <Route path='search' element={<Users/>}/>
                         <Route path='login' element={<Login/>}/>
+                        <Route path='settings' element={<Settings/>}/>
                     </Routes>
                 </div>
             </div>

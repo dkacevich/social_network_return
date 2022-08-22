@@ -5,7 +5,7 @@ const useAuthorized = () => {
         data: authData
     } = getAuthStatus()
 
-    return {authorized: authData.data.login}
+    return {authorized: authData.data.login, id: authData.data.id}
 }
 
 export default useAuthorized

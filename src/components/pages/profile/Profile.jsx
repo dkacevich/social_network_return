@@ -35,7 +35,7 @@ const Profile = ({authId}) => {
         <div className="profile">
             <img src={bg} alt="" className="profile__bg"/>
             <div className="profile__wrapper">
-                <ProfileInfo {...profileData} status={statusData}/>
+                <ProfileInfo yourProfile={id === authId} {...profileData} status={statusData}/>
                 <ProfilePosts/>
             </div>
         </div>
