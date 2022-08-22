@@ -12,7 +12,6 @@ export const profileApi = baseApi.injectEndpoints({
         }),
         fetchProfile: builder.mutation({
             query: (data) => {
-                debugger
                 return {
                     url: `/profile`,
                     method: 'PUT',

@@ -24,10 +24,12 @@ const Profile = ({authId}) => {
 
     const {
         data: statusData,
+        isLoading: statusLoading,
+        isFetching: statusFetching
     } = useGetStatus({id})
 
 
-    if (isLoading || isFetching) {
+    if (isLoading || isFetching || statusLoading || statusFetching) {
         return <MoonLoader/>
     }
 
