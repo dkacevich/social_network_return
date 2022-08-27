@@ -1,0 +1,19 @@
+.users-form {
+	display: flex;
+	gap: 20px;
+	margin-top: 20px;
+	// .users-form__input
+	&__input {
+		width: 50%;
+		padding: 5px 15px;
+	}
+
+	// .users-form__options
+	&__options {
+	}
+
+	// .users-form__btn
+	&__btn {
+		padding: 5px 15px;
+	}
+}
