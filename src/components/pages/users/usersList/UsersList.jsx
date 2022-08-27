@@ -42,7 +42,7 @@ const UsersList = ({users, data}) => {
 
     return (
         <ul className={styles.users}>
-            {userElements}
+            {userElements?.length ? userElements : 'Sorry these users don\'t exist'}
         </ul>
     )
 }
