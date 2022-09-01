@@ -1,8 +1,9 @@
 import './dialogs.scss'
+import './message.scss'
 import user from './../../../assets/user.jpg'
-import user2 from './../../../assets/user2.jpg'
 import {Navigate} from "react-router-dom";
 import useAuthorized from "../../../hooks/useAuthorized";
+import {MessageSendForm} from "../dialogsUI/dialogsUI";
 
 const Dialogs = () => {
 
@@ -12,6 +13,8 @@ const Dialogs = () => {
     return (
         <div className='dialogs page'>
             <div className='dialogs__title page-title'>Dialogs</div>
+            <br/>
+            Don't realized (Server support only REST Api)
             <div className="dialogs__wrapper">
                 <div className="dialogs__users">
                     <div className="dialogs__user user-dialogs">
@@ -36,36 +39,72 @@ const Dialogs = () => {
                     </div>
                 </div>
                 <div className="dialogs__messages messages">
-                    <div className="messages__item messages__item_to">
-                        <div className="messages__text">Hey, how are you?</div>
-                        <img src={user} alt=""/>
-                    </div>
-                    <div className="messages__item messages__item_from">
-                        <img src={user2} alt=""/>
-                        <div className="messages__text">Fine, thanks. And you?</div>
-                    </div>
-                    <div className="messages__item messages__item_to">
-                        <div className="messages__text">Great!)</div>
-                        <img src={user} alt=""/>
-                    </div>
-                    <div className="messages__item messages__item_from">
-                        <img src={user2} alt=""/>
-                        <div className="messages__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                            aspernatur beatae distinctio dolorem dolorum enim facilis molestiae nisi optio voluptatibus!
+                    <div className="messages__wrapper">
+                        <div className="messages__item item-message">
+                            <div className="item-message__wrapper">
+                                <div className="item-message__text">Great!)</div>
+                                <img src={user} alt=""/>
+                            </div>
+                            <span className="item-message__name">Dima</span>
+                        </div>
+                        <div className="messages__item item-message">
+                            <div className="item-message__wrapper">
+                                <div className="item-message__text">Great!)</div>
+                                <img src={user} alt=""/>
+                            </div>
+                            <span className="item-message__name">Dima</span>
+                        </div>
+                        <div className="messages__item item-message">
+                            <div className="item-message__wrapper">
+                                <div className="item-message__text">Great!)</div>
+                                <img src={user} alt=""/>
+                            </div>
+                            <span className="item-message__name">Dima</span>
+                        </div>
+                        <div className="messages__item item-message">
+                            <div className="item-message__wrapper">
+                                <div className="item-message__text">Great!)</div>
+                                <img src={user} alt=""/>
+                            </div>
+                            <span className="item-message__name">Dima</span>
+                        </div>
+                        <div className="messages__item item-message">
+                            <div className="item-message__wrapper">
+                                <div className="item-message__text">Great!)</div>
+                                <img src={user} alt=""/>
+                            </div>
+                            <span className="item-message__name">Dima</span>
+                        </div>
+                        <div className="messages__item item-message">
+                            <div className="item-message__wrapper">
+                                <div className="item-message__text">Great!)</div>
+                                <img src={user} alt=""/>
+                            </div>
+                            <span className="item-message__name">Dima</span>
+                        </div>
+                        <div className="messages__item item-message">
+                            <div className="item-message__wrapper">
+                                <div className="item-message__text">Great!)</div>
+                                <img src={user} alt=""/>
+                            </div>
+                            <span className="item-message__name">Dima</span>
+                        </div>
+                        <div className="messages__item item-message">
+                            <div className="item-message__wrapper">
+                                <div className="item-message__text">Great!)</div>
+                                <img src={user} alt=""/>
+                            </div>
+                            <span className="item-message__name">Dima</span>
                         </div>
                     </div>
 
-                    <form className="messages__form">
-                        <div className="messages__form-wrapper">
-                            <input placeholder='Some message...' type="text" className="messages__input input"/>
-                            <button className="messages__btn btn">Send</button>
-                        </div>
-                    </form>
+                    <MessageSendForm/>
                 </div>
             </div>
         </div>
     )
 }
+
 
 export default Dialogs
 

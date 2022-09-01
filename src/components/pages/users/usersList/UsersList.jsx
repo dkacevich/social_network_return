@@ -1,9 +1,10 @@
 import styles from "../Users.module.scss";
 import {Link} from "react-router-dom";
 import {useChangeFollowUserMutation} from "../usersApi";
+import useAuthorized from "../../../../hooks/useAuthorized";
 
 const UsersList = ({users, data}) => {
-
+    const {authorized, id: myId} = useAuthorized()
     const [changeFollowUser] = useChangeFollowUserMutation()
 
 
@@ -21,8 +22,8 @@ const UsersList = ({users, data}) => {
                                 <div className={styles.name}>{name}</div>
                                 <div className={styles.status}>{status ? status : 'User don\'t have status'}</div>
                             </div>
-                            <button disabled={loading} onClick={() => changeFollowed(followed, id)}
-                                    className={`btn ${styles.follow}`}>{loading ? 'Proceeding...' : followed ? 'Unfollow' : 'Follow'}</button>
+                            {(authorized && id !== myId) &&  <button disabled={loading} onClick={() => changeFollowed(followed, id)}
+                                                    className={`btn ${styles.follow}`}>{loading ? 'Proceeding...' : followed ? 'Unfollow' : 'Follow'}</button>}
                         </li>
                     )
                 }

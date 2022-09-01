@@ -9,12 +9,14 @@ import {useGetProfile, useGetStatus} from "./profileApi";
 
 const Profile = ({authId}) => {
     let {id} = useParams();
+    id = Number(id)
 
     if (!id && !authId) {
         return <Navigate to='/login'/>
     } else if (!id) {
         id = authId
     }
+
 
     const {
         data: profileData,
@@ -38,7 +40,7 @@ const Profile = ({authId}) => {
             <img src={bg} alt="" className="profile__bg"/>
             <div className="profile__wrapper">
                 <ProfileInfo yourProfile={id === authId} {...profileData} status={statusData}/>
-                <ProfilePosts/>
+                <ProfilePosts photos={profileData.photos}/>
             </div>
         </div>
     )

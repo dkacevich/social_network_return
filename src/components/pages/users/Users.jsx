@@ -22,7 +22,6 @@ const Users = () => {
         const {term, friend, count, page} = qs.parse(location.search.substring(1))
         const string = qs.stringify({term, friend})
         const query = string && `&${string}`
-        debugger
 
         setFilter(query)
         setPageCount(page || 1)

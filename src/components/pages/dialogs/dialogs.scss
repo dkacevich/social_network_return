@@ -48,43 +48,16 @@
 
 .messages {
 	position: relative;
-	max-height: 700px;
 	overflow: auto;
 	background: #fff;
 	padding: 15px;
 	border-radius: 5px;
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	padding-bottom: 100px;
-
-	// .messages__item
-	&__item {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		background: #DFDFDF;
-		max-width: 45%;
-		padding: 5px 15px;
-		margin-bottom: 15px;
-		img {
-			width: 50px;
-			height: 50px;
-			border-radius: 50%;
-		}
-		// .messages__item_to
-		&_to {
-			align-self: flex-end;
-		}
-
-		// .messages__item_from
-		&_from {
-		}
-	}
-
-	// .messages__text
-	&__text {
-		font-size: 22px;
+	&__wrapper {
+		height: 500px;
+		overflow-y: auto;
 	}
 
 	// .messages__form

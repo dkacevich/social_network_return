@@ -3,6 +3,7 @@ import {baseApi} from "../components/api/apiSlice";
 
 
 const reducer = {
+    //Websocket api
     //One reducer and middleware for all RTK Query APIs
     [baseApi.reducerPath]: baseApi.reducer,
 }

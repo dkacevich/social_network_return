@@ -1,4 +1,3 @@
-import user from "../../../../assets/user.jpg";
 import './ProfilePosts.scss'
 import {useState} from "react";
 
@@ -8,13 +7,13 @@ const posts = [
     {id: 2, text: 'Hey, why nobody loves me?!'},
 ]
 
-const ProfilePosts = () => {
+const ProfilePosts = ({photos}) => {
 
     const [postText, setPostText] = useState('');
 
     const postElements = posts.map(({id, text}) => (
         <div key={id} className="posts-profile__item">
-            <img className='posts-profile__user' src={user} alt=""/>
+            <img className='posts-profile__user' src={photos?.small} alt=""/>
             <div className="posts-profile__text">{text}</div>
         </div>
     ))
@@ -28,6 +27,7 @@ const ProfilePosts = () => {
 
     return (
         <div className="profile__posts posts-profile">
+            Don't realized (API doesn't support it)
             <div className="posts-profile__new ">
                 <div className="posts-profile__title">Create new one</div>
                 <form onSubmit={handleSubmit} className="posts-profile__form">

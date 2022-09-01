@@ -9,7 +9,8 @@ import {BrowserRouter as Router, Route, Routes,} from "react-router-dom";
 import {getAuthStatus} from "./authSlice";
 import {MoonLoader} from "react-spinners";
 import Login from "../pages/login/Login";
-import Settings from "../pages/settings/Settings";
+import WillDoInFuture from "../pages/forFuture/Settings";
+import Chat from "../pages/chat/Chat";
 
 
 const App = () => {
@@ -33,9 +34,12 @@ const App = () => {
                             <Route path=':id' element={<Profile/>}/>
                         </Route>
                         <Route path='dialogs' element={<Dialogs/>}/>
+                        <Route path='chat' element={<Chat/>}/>
                         <Route path='search' element={<Users/>}/>
                         <Route path='login' element={<Login/>}/>
-                        <Route path='settings' element={<Settings/>}/>
+                        <Route path='settings' element={<WillDoInFuture/>}/>
+                        <Route path='music' element={<WillDoInFuture/>}/>
+                        <Route path='feed' element={<WillDoInFuture/>}/>
                     </Routes>
                 </div>
             </div>
